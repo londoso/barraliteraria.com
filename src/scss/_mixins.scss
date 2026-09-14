@@ -1,0 +1,35 @@
+@mixin from($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: $small-bp) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $medium-bp) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $large-bp) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $xlarge-bp) { @content; }
+  }
+}
+
+// Familias tipográficas.
+@mixin serif {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+
+@mixin sans {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+// Pequeña etiqueta en versalitas con espaciado, para kickers y metadatos.
+@mixin eyebrow($color: $gold) {
+  @include sans;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: $color;
+}
+
+// Sombra suave y cálida para tarjetas / paneles.
+@mixin soft-shadow($strength: 1) {
+  box-shadow: 0 12px 30px rgba($black, 0.08 * $strength);
+}

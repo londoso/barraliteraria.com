@@ -1,0 +1,97 @@
+// Reset mínimo
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: $paper;
+  background-image:
+    radial-gradient(circle at 12% -8%, rgba($gold, 0.12), transparent 42%),
+    radial-gradient(circle at 88% 4%, rgba($burgundy, 0.08), transparent 40%),
+    radial-gradient(circle at 50% 120%, rgba($rust, 0.08), transparent 55%);
+  background-attachment: fixed;
+  color: $ink;
+  @include sans;
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: 0.1px;
+  overflow-x: hidden;
+}
+
+a {
+  color: $burgundy;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $burgundy-deep;
+  }
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  @include serif;
+  font-weight: 600;
+  line-height: 1.15;
+  color: $ink;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+section {
+  margin: 72px 0;
+
+  @include from('lg') {
+    margin: 108px 0;
+  }
+}
+
+// ── Reveal-on-scroll (sin dependencias externas) ──
+// El contenido es visible por defecto. Solo cuando JS "arma" la animación
+// (clase .reveal-armed) se oculta, y se revela al entrar en viewport.
+.reveal {
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal-armed {
+  opacity: 0;
+  transform: translateY(26px);
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal,
+  .reveal-armed { opacity: 1; transform: none; transition: none; }
+}

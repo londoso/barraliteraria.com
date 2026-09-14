@@ -1,0 +1,53 @@
+// Título de sección: serif, con un pequeño kicker dorado y filete inferior.
+%section-title {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 34px;
+  padding-bottom: 12px;
+  @include serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: $ink;
+
+  @include from('md') {
+    font-size: 40px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 64px;
+    height: 3px;
+    background: linear-gradient(90deg, $gold, $burgundy);
+    border-radius: 2px;
+  }
+}
+
+// Botón "ver más" / CTA.
+%cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px auto 0;
+  padding: 11px 26px;
+  @include sans;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: $burgundy;
+  background: transparent;
+  border: 1px solid rgba($burgundy, 0.4);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: $white;
+    background: $burgundy;
+    border-color: $burgundy;
+  }
+}

@@ -1,0 +1,98 @@
+@import '@/scss/variables';
+@import '@/scss/mixins';
+@import '@/scss/typography';
+
+.cards {
+  &__title { @extend %section-title; }
+
+  &__intro {
+    max-width: 60ch;
+    margin: -18px 0 30px;
+    color: $muted;
+    font-size: 17px;
+  }
+
+  &__list {
+    display: grid;
+    gap: 18px;
+
+    @include from('md') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__more {
+    @extend %cta;
+    margin-top: 28px;
+  }
+}
+
+.card {
+  position: relative;
+  padding: 24px 26px;
+  background: $paper-2;
+  border: 1px solid $paper-3;
+  border-radius: $radius;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, $gold, $burgundy);
+    opacity: 0.85;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($burgundy, 0.35);
+    @include soft-shadow(1.4);
+  }
+
+  &__date {
+    display: block;
+    margin-bottom: 8px;
+    @include eyebrow($rust);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  &__title {
+    @include serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: $ink;
+
+    a:hover { color: $burgundy; }
+  }
+
+  &__meta {
+    margin: 6px 0 0;
+    font-size: 14px;
+    font-style: italic;
+    color: $muted;
+  }
+
+  &__resources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-top: 16px;
+  }
+
+  &__resource {
+    @include sans;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: $burgundy;
+
+    &:hover { color: $burgundy-deep; }
+  }
+}

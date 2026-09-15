@@ -1,0 +1,66 @@
+name: website_CI
+
+on:
+  # Se ejecuta en cada push a la rama por defecto
+  push:
+    branches: [ main ]
+
+  # Permite ejecutar el workflow manualmente desde la pestaña Actions
+  workflow_dispatch:
+
+# Permisos del GITHUB_TOKEN para desplegar en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un único despliegue concurrente
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Node ⚙️
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install and build 🛠
+        run: |
+          npm ci
+          npm run build
+
+      - name: Add CNAME to build 🕺🏻
+        shell: bash
+        run: |
+          echo barraliteraria.com > dist/CNAME
+
+      - name: Setup Pages 🛠
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact ⬆️
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist'
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4

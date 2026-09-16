@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite-ssg build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.cjs,.mjs --fix --ignore-path .gitignore"
   },
@@ -15,11 +15,13 @@
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
+    "@unhead/vue": "^1.11.20",
     "@vitejs/plugin-vue": "^5.0.5",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.26.0",
     "sass": "^1.77.4",
-    "vite": "^5.2.12"
+    "vite": "^5.2.12",
+    "vite-ssg": "^0.23.8"
   },
   "engines": {
     "node": ">=24"

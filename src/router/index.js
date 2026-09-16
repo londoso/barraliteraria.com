@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/HomePage.vue'
 
-const routes = [
+// Definición de rutas. vite-ssg crea el router internamente a partir de
+// estas rutas (en desarrollo y en el prerender de producción).
+export const routes = [
   {
     path: '/',
     name: 'Home',
@@ -9,15 +10,9 @@ const routes = [
   }
 ]
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
-  scrollBehavior (to) {
-    if (to.hash) {
-      return { el: to.hash, behavior: 'smooth' }
-    }
-    return { top: 0 }
+export function scrollBehavior (to) {
+  if (to.hash) {
+    return { el: to.hash, behavior: 'smooth' }
   }
-})
-
-export default router
+  return { top: 0 }
+}

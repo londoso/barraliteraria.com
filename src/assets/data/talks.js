@@ -1,29 +1,29 @@
 // Charlas y conferencias de Carolina Barragán Ardila.
-// Reemplaza estos ejemplos por tus charlas reales.
+// Datos de ejemplo (Lorem Ipsum). Reemplázalos por tus charlas reales.
 // Campos: title, date (YYYY-MM-DD), event, resources[{ name, url }].
 export default [
   {
-    title: 'Leer el sur: William Faulkner y la construcción del tiempo',
+    title: 'Lorem ipsum dolor sit amet consectetur adipiscing',
     date: '2024-10-05',
-    event: 'Feria del Libro de Bogotá',
+    event: 'Lorem Ipsum Conf',
     resources: []
   },
   {
-    title: 'Entre la filosofía y la literatura: pensar con la ficción',
+    title: 'Excepteur sint occaecat cupidatat non proident',
     date: '2024-03-21',
-    event: 'Coloquio de Humanidades',
+    event: 'Dolor Sit Coloquio',
     resources: []
   },
   {
-    title: 'La novela colombiana y sus paisajes interiores',
+    title: 'Sunt in culpa qui officia deserunt mollit',
     date: '2023-08-12',
-    event: 'Encuentro de Letras',
+    event: 'Encuentro Amet',
     resources: []
   },
   {
-    title: 'Escritoras norteamericanas del siglo XX: una relectura',
+    title: 'Nemo enim ipsam voluptatem quia voluptas',
     date: '2022-05-19',
-    event: 'Cátedra abierta de Literatura',
+    event: 'Cátedra Ipsum',
     resources: []
   }
 ]
